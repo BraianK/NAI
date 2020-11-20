@@ -4,67 +4,29 @@
 
 
 from player import HumanPlayer, AiPlayer
-
-
-class TicTacToe:
-
-    def __init__(self):
-        self.fields_board = [' ' for _ in range(9)]
-        self.winner = None
-
-    def print_fields_board(self):
-        for row in [self.fields_board[i * 3:(i + 1) * 3] for i in range(3)]:
-            print('| ' + ' | '.join(row) + ' |')
-
-    @staticmethod
-    def print_fields_board_scheme():
-        """Returned argument a is squared."""
-        number_fields_board = [[str(i) for i in range(j * 3, (j + 1) * 3)] for j in range(3)]
-        for row in number_fields_board:
-            print('| ' + ' | '.join(row) + ' |')
-
-    def make_move(self, square, player_symbol):
-        if self.fields_board[square] == ' ':
-            self.fields_board[square] = player_symbol
-            if self.check_is_winner(player_symbol):
-                self.winner = player_symbol
-            return True
-        return False
-
-    def check_is_winner(self, player_symbol):
-        for row in [self.fields_board[i * 3:(i + 1) * 3] for i in range(3)]:
-            if all([symbol == player_symbol for symbol in row]):
-                return True
-        for i in range(3):
-            if all([symbol == player_symbol for symbol in [self.fields_board[i + j * 3] for j in range(3)]]):
-                return True
-        if all([s == player_symbol for s in [self.fields_board[i] for i in [0, 4, 8]]]):
-            return True
-        if all([s == player_symbol for s in [self.fields_board[i] for i in [2, 4, 6]]]):
-            return True
-
-        return False
-
-    def empty_fields_count(self):
-        return self.fields_board.count(' ')
-
-    def possible_moves(self):
-        return [i for i, x in enumerate(self.fields_board) if x == ' ']
+from tictactoe import TicTacToe
 
 
 def start_game(game, player_x, player_o):
+    """Metoda startująca rozgrywkę
+
+    Parametry wejściowe:
+        game (TicTacToe): instancja gry
+        player_x (Player): instancja obiektu gracza posiadającego znak X
+        player_o (Player): instancja obiektu gracza posiadającego znak O
+    """
     game.print_fields_board_scheme()
 
     player_symbol = 'X'
     while game.empty_fields_count():
         if player_symbol == 'O':
-            square = player_o.make_move(game)
+            field = player_o.get_move(game)
         else:
-            square = player_x.make_move(game)
+            field = player_x.get_move(game)
 
-        if game.make_move(square, player_symbol):
+        if game.make_move(field, player_symbol):
 
-            print(player_symbol + ' moved to field ' + str(square))
+            print(player_symbol + ' moved to field ' + str(field))
             game.print_fields_board()
             print('')
 

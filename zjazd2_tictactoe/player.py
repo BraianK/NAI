@@ -1,16 +1,39 @@
 class Player:
+    """Klasa definiująca instancje gracza
+
+    Atrybuty:
+        player_symbol (str): Przechowuje symbol gracza
+    """
     def __init__(self, player_symbol):
         self.player_symbol = player_symbol
 
-    def make_move(self, game):
+    def get_move(self, game):
+        """Metoda wykonująca ruch
+
+        Parametry wejściowe:
+            game (TicTacToe): Parametr przechowujący instancje gry
+        """
         pass
 
 
 class HumanPlayer(Player):
+    """Klasa definiująca gracza ludzkiego
+
+        Atrybuty:
+            player_symbol (str): Przechowuje symbol gracza
+    """
     def __init__(self, player_symbol):
         super().__init__(player_symbol)
 
-    def make_move(self, game):
+    def get_move(self, game):
+        """Metoda wykonująca ruch
+
+        Parametry wejściowe:
+            game (TicTacToe): Parametr przechowujący instancje gry
+
+        Parametry wyjściowe:
+            int: Numer pola
+        """
         valid_filed = False
         val = None
         while not valid_filed:
@@ -26,15 +49,37 @@ class HumanPlayer(Player):
 
 
 class AiPlayer(Player):
+    """Klasa definiująca gracza sztucznej inteligencji
+
+    Atrybuty:
+        player_symbol (str): Przechowuje symbol gracza
+    """
     def __init__(self, player_symbol):
         super().__init__(player_symbol)
 
-    def make_move(self, game):
+    def get_move(self, game):
+        """Metoda wykonująca ruch
+
+        Parametry wejściowe:
+            game (TicTacToe): Parametr przechowujący instancje gry
+
+        Parametry wyjściowe:
+            int: Numer pola
+        """
         if game.empty_fields_count() == 9:
             return 0
         return self.minimax(game, self.player_symbol)['move']
 
     def minimax(self, game_simulation, player):
+        """Metoda stosująca algorytm minimax
+
+        Parametry wejściowe:
+            game_symulation (TicTacToe): Parametr przechowujący instancje gry
+            player (Player): Parametr oznaczający instancje gracza
+
+        Parametry wyjściowe:
+            Object: Zwraca obiekt z najlepszym ruchem składający się z move i rate
+        """
         max_player = self.player_symbol
         other_player = 'O' if player == 'X' else 'X'
 
