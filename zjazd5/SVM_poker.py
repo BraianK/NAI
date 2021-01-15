@@ -1,6 +1,6 @@
 """
-Rekomendator filmów
-Program rekomnedujący filmy na podstawie danych zebranych w bazie
+SVM dla klasyfikacji
+Program, który za pomocą SVM klasyfikuje dane
 
 ## Autorzy
 -Paweł Szyszkowski s18184
@@ -11,15 +11,10 @@ Program rekomnedujący filmy na podstawie danych zebranych w bazie
 pip install -r requirements.txt
 
 ## Uruchomienie
-python main.py
+python SVM_poker.py
 
 ## Instrukcja użycia
-Po uruchomieniu programu należy:
--wybrać użytkownika, któremu chcemy znaleźć rekomendacje
--wybrać algorytm, którego chcemy użyć
--po zaprezentowaniu wyników możemy wybrać opcję pobrania opisu do filmu
-
-
+Po uruchomieniu programu zostaną nam przewidywane wyniki
 """
 
 import numpy as np

@@ -1,3 +1,21 @@
+"""
+SVM dla klasyfikacji
+Program, który za pomocą SVM klasyfikuje dane
+
+## Autorzy
+-Paweł Szyszkowski s18184
+-Braian Kreft s16723
+
+## Instalacja
+
+pip install -r requirements.txt
+
+## Uruchomienie
+python SVM_poker.py
+
+## Instrukcja użycia
+Po uruchomieniu programu zostaną nam przewidywane wyniki
+"""
 import numpy as np
 from sklearn import svm
 
