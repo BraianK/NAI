@@ -50,4 +50,5 @@ Generowanie predykcji
 """
 Z = svc.predict(np.c_[XX])
 
-print(Z)
+for i in range(Z.size):
+    print('Dane:', XX[i, :], ' wskazują na opinię ', 'pozytywną' if Z[i] == 1 else 'negatywną' )

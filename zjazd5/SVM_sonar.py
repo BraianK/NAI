@@ -46,5 +46,7 @@ XX = np.asarray(XX, dtype=np.float32)
 """
 Generowanie predykcji
 """
+
 Z = svc.predict(np.c_[XX.transpose()])
-print(Z)
+for i in range(Z.size):
+    print('Dane:', XX[:, i], ' wskazują na ', 'kamień' if Z[i] == 0 else 'minę')
