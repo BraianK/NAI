@@ -421,10 +421,10 @@ def heuristic(env, s):
     więcej niż 0,4 radiana (22 stopnie) jest złe
     docelowe y powinno być proporcjonalne do przesunięcia poziomego
     """
-    angle_targ = s[0] * 0.5 + s[2] * 1.0  # angle should point towards center
-    if angle_targ > 0.4: angle_targ = 0.4  # more than 0.4 radians (22 degrees) is bad
+    angle_targ = s[0] * 0.5 + s[2] * 1.0
+    if angle_targ > 0.4: angle_targ = 0.4
     if angle_targ < -0.4: angle_targ = -0.4
-    hover_targ = 0.55 * np.abs(s[0])  # target y should be proportional to horizontal offset
+    hover_targ = 0.55 * np.abs(s[0])
 
     angle_todo = (angle_targ - s[4]) * 0.5 - (s[5]) * 1.0
     hover_todo = (hover_targ - s[1]) * 0.5 - (s[3]) * 0.5
